@@ -972,13 +972,13 @@ jenkins:
 
     Ingress:
       Annotations:
-      # kubernetes.io/ingress.class: nginx
-      # kubernetes.io/tls-acme: "true"
+        kubernetes.io/ingress.class: nginx
+        kubernetes.io/tls-acme: "true"
 
       TLS:
-      # - secretName: jenkins.cluster.local
-      #   hosts:
-      #     - jenkins.cluster.local
+        - secretName: jenkins.cluster.local
+          hosts:
+            - jenkins.jx.77sec.net
 
     # Overwrite the base jenkins config and any plugins during upgrades
     Overwrite:
@@ -1014,7 +1014,7 @@ jenkins:
     # global node properties
     Global:
       EnvVars:
-        DOCKER_REGISTRY: ""
+        DOCKER_REGISTRY: "harbor.xiaobu.vip"
         TILLER_NAMESPACE: ""
 
   Agent:
