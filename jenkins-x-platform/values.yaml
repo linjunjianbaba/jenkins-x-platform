@@ -1,5 +1,5 @@
 # to specify the docker registry when not using Jenkins
-dockerRegistry: ""
+dockerRegistry: "harbor.xiaobu.vip"
 
 JXBasicAuth: admin:$apr1$a/HdTrV7$XYCGJWF9PdVwVVTvjMyaU/
 
@@ -208,7 +208,7 @@ gcactivities:
   - "activities"
   - "--batch-mode"
   image:
-    repository: gcr.io/jenkinsxio/builder-jx
+    repository: gcr.azk8s.cn/jenkinsxio/builder-jx
     tag: 2.0.851-206
   role:
     enabled: true
@@ -298,7 +298,7 @@ gcpods:
   - "pods"
   - "--batch-mode"
   image:
-    repository: gcr.io/jenkinsxio/builder-jx
+    repository: gcr.azk8s.cn/jenkinsxio/builder-jx
     tag: 2.0.851-206
   role:
     enabled: true
@@ -390,7 +390,7 @@ controllerworkflow:
   - "controller"
   - "workflow"
   image:
-    repository: gcr.io/jenkinsxio/builder-jx
+    repository: gcr.azk8s.cn/jenkinsxio/builder-jx
     tag: 2.0.851-206
   clusterrole:
     enabled: true
@@ -460,7 +460,7 @@ controllerbuild:
   - "--git-credentials"
   - "--verbose"
   image:
-    repository: gcr.io/jenkinsxio/builder-go
+    repository: gcr.azk8s.cn/jenkinsxio/builder-go
     tag: 2.0.851-206
   env:
     GIT_AUTHOR_NAME: "jenkins-x-bot"
@@ -555,7 +555,7 @@ controllercommitstatus:
   - "commitstatus"
   - "--verbose"
   image:
-    repository: gcr.io/jenkinsxio/builder-jx
+    repository: gcr.azk8s.cn/jenkinsxio/builder-jx
     tag: 2.0.851-206
   clusterrole:
     enabled: true
@@ -632,7 +632,7 @@ controllerrole:
   - "controller"
   - "role"
   image:
-    repository: gcr.io/jenkinsxio/builder-jx
+    repository: gcr.azk8s.cn/jenkinsxio/builder-jx
     tag: 2.0.851-206
   clusterrole:
     enabled: true
@@ -705,7 +705,7 @@ controllerteam:
   - "controller"
   - "team"
   image:
-    repository: gcr.io/jenkinsxio/builder-jx
+    repository: gcr.azk8s.cn/jenkinsxio/builder-jx
     tag: 2.0.851-206
   clusterrole:
     enabled: true
@@ -833,7 +833,7 @@ pipelinecontroller:
   enabled: true
 
 docker-registry:
-  enabled: true
+  enabled: false
   service:
     annotations:
       fabric8.io/expose: "true"
@@ -849,7 +849,7 @@ kubernetes-dashboard:
     fabric8.io/ingress.annotations: "kubernetes.io/ingress.class: nginx\nnginx.ingress.kubernetes.io/auth-type: basic\nnginx.ingress.kubernetes.io/auth-secret: jx-basic-auth"
 
 nexus:
-  enabled: true
+  enabled: false
   service:
     annotations:
       fabric8.io/expose: "true"
@@ -862,7 +862,7 @@ nexusServiceLink:
   externalName: ""
 
 chartmuseum:
-  enabled: true
+  enabled: false
   service:
     annotations:
       fabric8.io/expose: "true"
@@ -904,7 +904,7 @@ jenkins:
     Name: jenkins-master
     # Image: "jenkinsci/jenkins"
     # ImageTag: "2.89"
-    Image: "gcr.io/jenkinsxio/jenkinsx"
+    Image: "gcr.azk8s.cn/jenkinsxio/jenkinsx"
     ImageTag: "0.0.80"
     ImagePullPolicy: "IfNotPresent"
     Component: "jenkins-master"
@@ -1063,7 +1063,7 @@ jenkins:
             RequestMemory: "128Mi"
             Args: '${computer.jnlpmac} ${computer.name}'
           aws-cdk:
-            Image: gcr.io/jenkinsxio/builder-maven-nodejs:2.0.851-206
+            Image: gcr.azk8s.cn/jenkinsxio/builder-maven-nodejs:2.0.851-206
             Privileged: true
             RequestCpu: "400m"
             RequestMemory: "512Mi"
@@ -1118,7 +1118,7 @@ jenkins:
             RequestMemory: "128Mi"
             Args: '${computer.jnlpmac} ${computer.name}'
           Maven:
-            Image: gcr.io/jenkinsxio/builder-maven:2.0.851-206
+            Image: gcr.azk8s.cn/jenkinsxio/builder-maven:2.0.851-206
             Privileged: true
             RequestCpu: "400m"
             RequestMemory: "512Mi"
@@ -1174,7 +1174,7 @@ jenkins:
             RequestMemory: "128Mi"
             Args: '${computer.jnlpmac} ${computer.name}'
           Maven:
-            Image: gcr.io/jenkinsxio/builder-maven-java11:2.0.851-206
+            Image: gcr.azk8s.cn/jenkinsxio/builder-maven-java11:2.0.851-206
             Privileged: true
             RequestCpu: "400m"
             RequestMemory: "512Mi"
@@ -1230,7 +1230,7 @@ jenkins:
             RequestMemory: "128Mi"
             Args: '${computer.jnlpmac} ${computer.name}'
           Maven:
-            Image: gcr.io/jenkinsxio/builder-maven-graalvm:0.1.560
+            Image: gcr.azk8s.cn/jenkinsxio/builder-maven-graalvm:0.1.560
             Privileged: true
             RequestCpu: "400m"
             RequestMemory: "2Gi"
@@ -1280,7 +1280,7 @@ jenkins:
             RequestMemory: "128Mi"
             Args: '${computer.jnlpmac} ${computer.name}'
           Gradle:
-            Image: gcr.io/jenkinsxio/builder-gradle:2.0.851-206
+            Image: gcr.azk8s.cn/jenkinsxio/builder-gradle:2.0.851-206
             Privileged: true
             RequestCpu: "400m"
             RequestMemory: "512Mi"
@@ -1333,7 +1333,7 @@ jenkins:
             RequestMemory: "128Mi"
             Args: '${computer.jnlpmac} ${computer.name}'
           Scala:
-            Image: gcr.io/jenkinsxio/builder-scala:2.0.851-206
+            Image: gcr.azk8s.cn/jenkinsxio/builder-scala:2.0.851-206
             Privileged: true
             RequestCpu: "400m"
             RequestMemory: "512Mi"
@@ -1379,7 +1379,7 @@ jenkins:
             RequestMemory: "128Mi"
             Args: '${computer.jnlpmac} ${computer.name}'
           Go:
-            Image: gcr.io/jenkinsxio/builder-go:2.0.851-206
+            Image: gcr.azk8s.cn/jenkinsxio/builder-go:2.0.851-206
             Privileged: true
             RequestCpu: "400m"
             RequestMemory: "600Mi"
@@ -1424,7 +1424,7 @@ jenkins:
             RequestMemory: "128Mi"
             Args: '${computer.jnlpmac} ${computer.name}'
           Terraform:
-            Image: gcr.io/jenkinsxio/builder-terraform:2.0.851-206
+            Image: gcr.azk8s.cn/jenkinsxio/builder-terraform:2.0.851-206
             Privileged: true
             RequestCpu: "400m"
             RequestMemory: "600Mi"
@@ -1470,7 +1470,7 @@ jenkins:
             RequestMemory: "128Mi"
             Args: '${computer.jnlpmac} ${computer.name}'
           Rust:
-            Image: gcr.io/jenkinsxio/builder-rust:2.0.851-206
+            Image: gcr.azk8s.cn/jenkinsxio/builder-rust:2.0.851-206
             Privileged: true
             RequestCpu: "400m"
             RequestMemory: "512Mi"
@@ -1516,7 +1516,7 @@ jenkins:
             RequestMemory: "128Mi"
             Args: '${computer.jnlpmac} ${computer.name}'
           Newman:
-            Image: gcr.io/jenkinsxio/builder-newman:2.0.851-206
+            Image: gcr.azk8s.cn/jenkinsxio/builder-newman:2.0.851-206
             Privileged: true
             RequestCpu: "400m"
             RequestMemory: "512Mi"
@@ -1563,7 +1563,7 @@ jenkins:
             RequestMemory: "128Mi"
             Args: '${computer.jnlpmac} ${computer.name}'
           Nodejs:
-            Image: gcr.io/jenkinsxio/builder-nodejs8x:2.0.851-206
+            Image: gcr.azk8s.cn/jenkinsxio/builder-nodejs8x:2.0.851-206
             Privileged: true
             RequestCpu: "400m"
             RequestMemory: "512Mi"
@@ -1610,7 +1610,7 @@ jenkins:
             RequestMemory: "128Mi"
             Args: '${computer.jnlpmac} ${computer.name}'
           Nodejs:
-            Image: gcr.io/jenkinsxio/builder-nodejs10x:2.0.851-206
+            Image: gcr.azk8s.cn/jenkinsxio/builder-nodejs10x:2.0.851-206
             Privileged: true
             RequestCpu: "400m"
             RequestMemory: "512Mi"
@@ -1646,7 +1646,7 @@ jenkins:
             RequestMemory: "128Mi"
             Args: '${computer.jnlpmac} ${computer.name}'
           Nodejs:
-            Image: gcr.io/jenkinsxio/builder-nodejs12x:2.0.851-206
+            Image: gcr.azk8s.cn/jenkinsxio/builder-nodejs12x:2.0.851-206
             Privileged: true
             RequestCpu: "400m"
             RequestMemory: "512Mi"
@@ -1682,7 +1682,7 @@ jenkins:
             RequestMemory: "128Mi"
             Args: '${computer.jnlpmac} ${computer.name}'
           Nodejs:
-            Image: gcr.io/jenkinsxio/builder-php5x:2.0.851-206
+            Image: gcr.azk8s.cn/jenkinsxio/builder-php5x:2.0.851-206
             Privileged: true
             RequestCpu: "400m"
             RequestMemory: "512Mi"
@@ -1718,7 +1718,7 @@ jenkins:
             RequestMemory: "128Mi"
             Args: '${computer.jnlpmac} ${computer.name}'
           Nodejs:
-            Image: gcr.io/jenkinsxio/builder-php7x:2.0.851-206
+            Image: gcr.azk8s.cn/jenkinsxio/builder-php7x:2.0.851-206
             Privileged: true
             RequestCpu: "400m"
             RequestMemory: "512Mi"
@@ -1765,7 +1765,7 @@ jenkins:
             RequestMemory: "128Mi"
             Args: '${computer.jnlpmac} ${computer.name}'
           Nodejs:
-            Image: gcr.io/jenkinsxio/builder-nodejs:2.0.851-206
+            Image: gcr.azk8s.cn/jenkinsxio/builder-nodejs:2.0.851-206
             Privileged: true
             RequestCpu: "400m"
             RequestMemory: "512Mi"
@@ -1808,7 +1808,7 @@ jenkins:
             RequestMemory: "128Mi"
             Args: '${computer.jnlpmac} ${computer.name}'
           MavenNodejs:
-            Image: gcr.io/jenkinsxio/builder-maven-nodejs:2.0.851-206
+            Image: gcr.azk8s.cn/jenkinsxio/builder-maven-nodejs:2.0.851-206
             Privileged: true
             RequestCpu: "400m"
             RequestMemory: "512Mi"
@@ -1851,7 +1851,7 @@ jenkins:
             RequestMemory: "128Mi"
             Args: '${computer.jnlpmac} ${computer.name}'
           JX-base:
-            Image: gcr.io/jenkinsxio/builder-jx:2.0.851-206
+            Image: gcr.azk8s.cn/jenkinsxio/builder-jx:2.0.851-206
             Privileged: true
             RequestCpu: "200m"
             RequestMemory: "256Mi"
@@ -1896,7 +1896,7 @@ jenkins:
             RequestMemory: "128Mi"
             Args: '${computer.jnlpmac} ${computer.name}'
           Promote:
-            Image: gcr.io/jenkinsxio/builder-jx:2.0.851-206
+            Image: gcr.azk8s.cn/jenkinsxio/builder-jx:2.0.851-206
             Privileged: true
             RequestCpu: "200m"
             RequestMemory: "100Mi"
@@ -1977,7 +1977,7 @@ jenkins:
             RequestMemory: "128Mi"
             Args: '${computer.jnlpmac} ${computer.name}'
           Python:
-            Image: gcr.io/jenkinsxio/builder-python2:2.0.851-206
+            Image: gcr.azk8s.cn/jenkinsxio/builder-python2:2.0.851-206
             Privileged: true
             RequestCpu: "400m"
             RequestMemory: "512Mi"
@@ -2024,7 +2024,7 @@ jenkins:
             RequestMemory: "128Mi"
             Args: '${computer.jnlpmac} ${computer.name}'
           Python:
-            Image: gcr.io/jenkinsxio/builder-python:2.0.851-206
+            Image: gcr.azk8s.cn/jenkinsxio/builder-python:2.0.851-206
             Privileged: true
             RequestCpu: "400m"
             RequestMemory: "512Mi"
@@ -2071,7 +2071,7 @@ jenkins:
             RequestMemory: "128Mi"
             Args: '${computer.jnlpmac} ${computer.name}'
           Python:
-            Image: gcr.io/jenkinsxio/builder-python37:2.0.851-206
+            Image: gcr.azk8s.cn/jenkinsxio/builder-python37:2.0.851-206
             Privileged: true
             RequestCpu: "400m"
             RequestMemory: "512Mi"
@@ -2165,7 +2165,7 @@ jenkins:
             RequestMemory: "128Mi"
             Args: '${computer.jnlpmac} ${computer.name}'
           Swift:
-            Image: gcr.io/jenkinsxio/builder-swift:2.0.851-206
+            Image: gcr.azk8s.cn/jenkinsxio/builder-swift:2.0.851-206
             Privileged: true
             RequestCpu: "400m"
             RequestMemory: "512Mi"
@@ -2211,7 +2211,7 @@ jenkins:
             RequestMemory: "128Mi"
             Args: '${computer.jnlpmac} ${computer.name}'
           Dlang:
-            Image: gcr.io/jenkinsxio/builder-dlang:2.0.851-206
+            Image: gcr.azk8s.cn/jenkinsxio/builder-dlang:2.0.851-206
             Privileged: true
             RequestCpu: "500m"
             RequestMemory: "1024Mi"
@@ -2258,7 +2258,7 @@ jenkins:
             RequestMemory: "128Mi"
             Args: '${computer.jnlpmac} ${computer.name}'
           Machine-Learning:
-            Image: gcr.io/jenkinsxio/builder-machine-learning:0.1.815
+            Image: gcr.azk8s.cn/jenkinsxio/builder-machine-learning:0.1.815
             Privileged: true
             RequestCpu: "2000m"
             RequestMemory: "4Gi"
@@ -2305,7 +2305,7 @@ jenkins:
             RequestMemory: "128Mi"
             Args: '${computer.jnlpmac} ${computer.name}'
           Machine-Learning:
-            Image: gcr.io/jenkinsxio/builder-machine-learning-gpu:0.1.815
+            Image: gcr.azk8s.cn/jenkinsxio/builder-machine-learning-gpu:0.1.815
             Privileged: true
             RequestCpu: "1000m"
             RequestMemory: "1Gi"
