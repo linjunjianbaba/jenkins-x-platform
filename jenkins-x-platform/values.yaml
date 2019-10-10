@@ -1,5 +1,5 @@
 # to specify the docker registry when not using Jenkins
-dockerRegistry: "harbor.xiaobu.vip"
+dockerRegistry: ""
 
 JXBasicAuth: admin:$apr1$a/HdTrV7$XYCGJWF9PdVwVVTvjMyaU/
 
@@ -33,7 +33,7 @@ gcpreviews:
     - "previews"
     - "--batch-mode"
   image:
-    repository: gcr.io/jenkinsxio/builder-jx
+    repository: gcr.azk8s.cn/jenkinsxio/builder-jx
     tag: 2.0.851-206
   role:
     enabled: true
@@ -978,7 +978,7 @@ jenkins:
       TLS:
         - secretName: jenkins.cluster.local
           hosts:
-            - jenkins.jx.77sec.net
+            - jenkins.jx.xiaobu.vip
 
     # Overwrite the base jenkins config and any plugins during upgrades
     Overwrite:
